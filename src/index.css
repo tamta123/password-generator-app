@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap");
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #14131b 0%, #08070b 100%);
+}
