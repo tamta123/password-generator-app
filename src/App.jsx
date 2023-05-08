@@ -1,6 +1,39 @@
 import "./app.css";
+import React, { useState } from "react";
 
 function App() {
+  const [sliderValue, setSliderValue] = useState(10);
+  const [uppercaseChecked, setUppercaseChecked] = useState(false);
+  const [lowercaseChecked, setLowercaseChecked] = useState(false);
+  const [numbersChecked, setNumbersChecked] = useState(false);
+  const [symbolsChecked, setSymbolsChecked] = useState(false);
+
+  const handleSliderChange = (event) => {
+    setSliderValue(event.target.value);
+  };
+
+  const countCheckedBoxes = () => {
+    const numChecked = [
+      uppercaseChecked,
+      lowercaseChecked,
+      numbersChecked,
+      symbolsChecked,
+    ].filter((checked) => checked).length;
+
+    const strengthLevel =
+      numChecked === 0
+        ? "TOO WEAK"
+        : numChecked === 1
+        ? "WEAK"
+        : numChecked <= 3
+        ? "MEDIUM"
+        : "STRONG";
+
+    return {
+      strengthLevel,
+    };
+  };
+
   return (
     <div>
       <h1>Password Generator</h1>
@@ -17,9 +50,9 @@ function App() {
         <div className="characteristics">
           <div className="character-length">
             <span className="length">Character Length</span>
-            <span className="number">10</span>
+            <span className="number">{sliderValue}</span>
           </div>
-          <div class="slide-container">
+          <div className="slide-container">
             <input
               className="slider"
               type="range"
@@ -28,29 +61,49 @@ function App() {
               min="0"
               max="20"
               step="1"
+              value={sliderValue}
+              onChange={handleSliderChange}
             />
           </div>
           <div className="checkbox">
             <div>
-              <div className="box" id="Uppercase"></div>
-              <label for="Uppercase"> Include Uppercase Letters</label>
+              <div
+                className={`box ${uppercaseChecked ? "checked" : ""}`}
+                id="Uppercase"
+                onClick={() => setUppercaseChecked(!uppercaseChecked)}
+              ></div>
+              <label htmlFor="Uppercase"> Include Uppercase Letters</label>
             </div>
             <div>
-              <div className="box" id="Lowercase"></div>
-              <label for="Lowercase"> Include Lowercase Letters</label>
+              <div
+                className={`box ${lowercaseChecked ? "checked" : ""}`}
+                id="Lowercase"
+                onClick={() => setLowercaseChecked(!lowercaseChecked)}
+              ></div>
+              <label htmlFor="Lowercase"> Include Lowercase Letters</label>
             </div>
             <div>
-              <div className="box" id="Numbers"></div>
-              <label for="Numbers"> Include Numbers</label>
+              <div
+                className={`box ${numbersChecked ? "checked" : ""}`}
+                id="Numbers"
+                onClick={() => setNumbersChecked(!numbersChecked)}
+              ></div>
+              <label htmlFor="Numbers"> Include Numbers</label>
             </div>
             <div>
-              <div className="box" id="Symbols"></div>
-              <label for="Symbols"> Include Symbols</label>
+              <div
+                className={`box ${symbolsChecked ? "checked" : ""}`}
+                id="Symbols"
+                onClick={() => setSymbolsChecked(!symbolsChecked)}
+              ></div>
+              <label htmlFor="Symbols"> Include Symbols</label>
             </div>
           </div>
           <div className="strength">
-            <span class="title">STRENGTH</span>
-            <span className="strength-level">MEDIUM</span>
+            <span className="title">STRENGTH</span>
+            <span className="strength-level">
+              {countCheckedBoxes().strengthLevel}
+            </span>
             <div className="indicator">
               <div></div>
               <div></div>
