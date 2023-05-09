@@ -58,10 +58,18 @@ h1 {
   line-height: 32px;
   color: #a4ffaf;
 }
-.slider {
+input[type="range"] {
+  -webkit-appearance: none;
   width: 100%;
-  margin-top: 23px;
-  background: #a4ffaf;
+  height: 8px;
+  background: rgba(164, 255, 175, 1);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: #e6e5ea;
 }
 
 .checkbox {
@@ -79,7 +87,12 @@ h1 {
   width: 20px;
   height: 20px;
   border: 2px solid #e6e5ea;
-  background: #24232c;
+}
+.checked {
+  background-color: #a4ffaf;
+  background-image: url("./assets/images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 label {

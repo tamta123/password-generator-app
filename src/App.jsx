@@ -7,31 +7,59 @@ function App() {
   const [lowercaseChecked, setLowercaseChecked] = useState(false);
   const [numbersChecked, setNumbersChecked] = useState(false);
   const [symbolsChecked, setSymbolsChecked] = useState(false);
+  const [password, setPassword] = useState("");
 
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
   };
 
-  const countCheckedBoxes = () => {
-    const numChecked = [
-      uppercaseChecked,
-      lowercaseChecked,
-      numbersChecked,
-      symbolsChecked,
-    ].filter((checked) => checked).length;
+  const numChecked = [
+    uppercaseChecked,
+    lowercaseChecked,
+    numbersChecked,
+    symbolsChecked,
+  ].filter((checked) => checked).length;
 
-    const strengthLevel =
-      numChecked === 0
-        ? "TOO WEAK"
-        : numChecked === 1
-        ? "WEAK"
-        : numChecked <= 3
-        ? "MEDIUM"
-        : "STRONG";
+  const strengthLevel =
+    numChecked === 1
+      ? "TOO WEAK"
+      : numChecked === 2
+      ? "WEAK"
+      : numChecked === 3
+      ? "MEDIUM"
+      : numChecked === 4
+      ? "STRONG"
+      : " ";
 
-    return {
-      strengthLevel,
-    };
+  const Include = {
+    Uppers: "QWERTYUIOPASDFGHJKLZXCVBNM",
+    Lowers: "qwertyuiopasdfghjklzxcvbnm",
+    Numbers: "1234567890",
+    Symbols: "!@#$%^&*",
+  };
+
+  const getRandomCharFromString = (str) =>
+    str.charAt(Math.floor(Math.random() * str.length));
+
+  const generatePassword = () => {
+    let pwd = "";
+    if (uppercaseChecked) {
+      pwd += Include.Uppers;
+    }
+    if (lowercaseChecked) {
+      pwd += Include.Lowers;
+    }
+    if (numbersChecked) {
+      pwd += Include.Numbers;
+    }
+    if (symbolsChecked) {
+      pwd += Include.Symbols;
+    }
+    let newPwd = "";
+    for (let i = 0; i < sliderValue; i++) {
+      newPwd += getRandomCharFromString(pwd);
+    }
+    setPassword(newPwd);
   };
 
   return (
@@ -39,7 +67,7 @@ function App() {
       <h1>Password Generator</h1>
       <main>
         <div className="final-password">
-          <span className="password">something</span>
+          <span className="password">{password}</span>
           <svg width="21" height="24" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M20.341 3.091 17.909.659A2.25 2.25 0 0 0 16.319 0H8.25A2.25 2.25 0 0 0 6 2.25V4.5H2.25A2.25 2.25 0 0 0 0 6.75v15A2.25 2.25 0 0 0 2.25 24h10.5A2.25 2.25 0 0 0 15 21.75V19.5h3.75A2.25 2.25 0 0 0 21 17.25V4.682a2.25 2.25 0 0 0-.659-1.591ZM12.469 21.75H2.53a.281.281 0 0 1-.281-.281V7.03a.281.281 0 0 1 .281-.281H6v10.5a2.25 2.25 0 0 0 2.25 2.25h4.5v1.969a.282.282 0 0 1-.281.281Zm6-4.5H8.53a.281.281 0 0 1-.281-.281V2.53a.281.281 0 0 1 .281-.281H13.5v4.125c0 .621.504 1.125 1.125 1.125h4.125v9.469a.282.282 0 0 1-.281.281Zm.281-12h-3v-3h.451c.075 0 .147.03.2.082L18.667 4.6a.283.283 0 0 1 .082.199v.451Z"
@@ -58,7 +86,7 @@ function App() {
               type="range"
               id="vol"
               name="vol"
-              min="0"
+              min="5"
               max="20"
               step="1"
               value={sliderValue}
@@ -101,17 +129,67 @@ function App() {
           </div>
           <div className="strength">
             <span className="title">STRENGTH</span>
-            <span className="strength-level">
-              {countCheckedBoxes().strengthLevel}
-            </span>
+            <span className="strength-level">{strengthLevel}</span>
             <div className="indicator">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+              <div
+                style={{
+                  background:
+                    numChecked === 1
+                      ? "#F64A4A"
+                      : numChecked === 2
+                      ? "#FB7C58"
+                      : numChecked === 3
+                      ? "#F8CD65"
+                      : numChecked === 4
+                      ? "#A4FFAF"
+                      : "",
+                }}
+              ></div>
+              <div
+                style={{
+                  background:
+                    numChecked === 1
+                      ? ""
+                      : numChecked === 2
+                      ? "#FB7C58"
+                      : numChecked === 3
+                      ? "#F8CD65"
+                      : numChecked === 4
+                      ? "#A4FFAF"
+                      : "",
+                }}
+              ></div>
+              <div
+                style={{
+                  background:
+                    numChecked === 1
+                      ? ""
+                      : numChecked === 2
+                      ? ""
+                      : numChecked === 3
+                      ? "#F8CD65"
+                      : numChecked === 4
+                      ? "#A4FFAF"
+                      : "",
+                }}
+              ></div>
+              <div
+                style={{
+                  background:
+                    numChecked === 1
+                      ? ""
+                      : numChecked === 2
+                      ? ""
+                      : numChecked === 3
+                      ? ""
+                      : numChecked === 4
+                      ? "#A4FFAF"
+                      : "",
+                }}
+              ></div>
             </div>
           </div>
-          <button className="generate">
+          <button className="generate" onClick={generatePassword}>
             GENERATE
             <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
               <path
