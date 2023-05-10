@@ -3,7 +3,7 @@ main {
 }
 
 h1 {
-  margin-top: 64px;
+  padding-top: 64px;
   font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 700;
@@ -212,7 +212,7 @@ label {
     padding: 31px 114px 196px 114px;
   }
   h1 {
-    margin-top: 133px;
+    padding-top: 133px;
   }
   .password {
     font-weight: 700;

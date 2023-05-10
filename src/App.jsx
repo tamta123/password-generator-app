@@ -9,7 +9,6 @@ function App() {
   const [symbolsChecked, setSymbolsChecked] = useState(false);
   const [password, setPassword] = useState("");
   const [copied, setCopied] = useState(false);
-  const [val, setVal] = useState(100);
 
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
