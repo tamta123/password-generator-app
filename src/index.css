@@ -12,6 +12,6 @@
 
 body {
   width: 100vw;
-  height: auto;
+  height: 100vh;
   background: linear-gradient(180deg, #14131b 0%, #08070b 100%);
 }
