@@ -18,7 +18,8 @@ h1 {
   background: #24232c;
   padding: 17px 22px 15px 16px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
 }
 
 .password {
@@ -28,6 +29,17 @@ h1 {
   font-size: 24px;
   line-height: 32px;
   color: #e6e5ea;
+  background: #24232c;
+  margin-right: auto;
+}
+.copied {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #a4ffaf;
+  /* display: none; */
 }
 .characteristics {
   margin-top: 16px;
