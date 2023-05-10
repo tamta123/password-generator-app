@@ -9,6 +9,7 @@ function App() {
   const [symbolsChecked, setSymbolsChecked] = useState(false);
   const [password, setPassword] = useState("");
   const [copied, setCopied] = useState(false);
+  const [val, setVal] = useState(100);
 
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
@@ -22,13 +23,13 @@ function App() {
   ].filter((checked) => checked).length;
 
   const strengthLevel =
-    numChecked === 1
+    numChecked === 1 || sliderValue < 5
       ? "TOO WEAK"
-      : numChecked === 2
+      : numChecked === 2 || sliderValue < 5
       ? "WEAK"
-      : numChecked === 3
+      : numChecked === 3 || sliderValue < 5
       ? "MEDIUM"
-      : numChecked === 4
+      : numChecked === 4 || sliderValue < 5
       ? "STRONG"
       : " ";
 
@@ -101,11 +102,18 @@ function App() {
               type="range"
               id="vol"
               name="vol"
-              min="5"
+              min="0"
               max="20"
               step="1"
               value={sliderValue}
-              onChange={handleSliderChange}
+              onChange={
+                (handleSliderChange, (e) => setSliderValue(e.target.value))
+              }
+              style={{
+                background: `linear-gradient(to right, rgba(164, 255, 175, 1) 0%, rgba(164, 255, 175, 1)
+ ${sliderValue * 5}%, rgba(24, 23, 31, 1)
+ ${sliderValue}%)`,
+              }}
             />
           </div>
           <div className="checkbox">
@@ -149,13 +157,13 @@ function App() {
               <div
                 style={{
                   background:
-                    numChecked === 1
+                    numChecked === 1 || sliderValue < 5
                       ? "#F64A4A"
-                      : numChecked === 2
+                      : numChecked === 2 || sliderValue < 5
                       ? "#FB7C58"
-                      : numChecked === 3
+                      : numChecked === 3 || sliderValue < 5
                       ? "#F8CD65"
-                      : numChecked === 4
+                      : numChecked === 4 || sliderValue < 5
                       ? "#A4FFAF"
                       : "",
                 }}
@@ -163,13 +171,13 @@ function App() {
               <div
                 style={{
                   background:
-                    numChecked === 1
+                    numChecked === 1 || sliderValue < 5
                       ? ""
-                      : numChecked === 2
+                      : numChecked === 2 || sliderValue < 5
                       ? "#FB7C58"
-                      : numChecked === 3
+                      : numChecked === 3 || sliderValue < 5
                       ? "#F8CD65"
-                      : numChecked === 4
+                      : numChecked === 4 || sliderValue < 5
                       ? "#A4FFAF"
                       : "",
                 }}
@@ -177,13 +185,13 @@ function App() {
               <div
                 style={{
                   background:
-                    numChecked === 1
+                    numChecked === 1 || sliderValue < 5
                       ? ""
-                      : numChecked === 2
+                      : numChecked === 2 || sliderValue < 5
                       ? ""
-                      : numChecked === 3
+                      : numChecked === 3 || sliderValue < 5
                       ? "#F8CD65"
-                      : numChecked === 4
+                      : numChecked === 4 || sliderValue < 5
                       ? "#A4FFAF"
                       : "",
                 }}
@@ -191,13 +199,13 @@ function App() {
               <div
                 style={{
                   background:
-                    numChecked === 1
+                    numChecked === 1 || sliderValue < 5
                       ? ""
-                      : numChecked === 2
+                      : numChecked === 2 || sliderValue < 5
                       ? ""
-                      : numChecked === 3
+                      : numChecked === 3 || sliderValue < 5
                       ? ""
-                      : numChecked === 4
+                      : numChecked === 4 || sliderValue < 5
                       ? "#A4FFAF"
                       : "",
                 }}

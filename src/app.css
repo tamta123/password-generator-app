@@ -22,6 +22,14 @@ h1 {
   gap: 16px;
 }
 
+.final-password svg {
+  cursor: pointer;
+}
+
+.final-password svg:hover path {
+  fill: #ffffff;
+}
+
 .password {
   font-family: "JetBrains Mono";
   font-style: normal;
@@ -39,8 +47,8 @@ h1 {
   font-size: 18px;
   line-height: 24px;
   color: #a4ffaf;
-  /* display: none; */
 }
+
 .characteristics {
   margin-top: 16px;
   padding: 16px;
@@ -74,7 +82,8 @@ input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
   height: 8px;
-  background: rgba(164, 255, 175, 1);
+  /* background: rgba(164, 255, 175, 1); */
+  cursor: pointer;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -82,6 +91,10 @@ input[type="range"]::-webkit-slider-thumb {
   width: 28px;
   border-radius: 50%;
   background: #e6e5ea;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #18171f;
+  border: 2px solid #a4ffaf;
 }
 
 .checkbox {
@@ -99,7 +112,12 @@ input[type="range"]::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
   border: 2px solid #e6e5ea;
+  cursor: pointer;
 }
+.checkbox .box:hover {
+  border: 2px solid #a4ffaf;
+}
+
 .checked {
   background-color: #a4ffaf;
   background-image: url("./assets/images/icon-check.svg");
@@ -162,6 +180,21 @@ label {
   justify-content: center;
   align-items: center;
   gap: 16px;
+  cursor: pointer;
+}
+.generate:hover {
+  background: #24232c;
+  border: 2px solid #a4ffaf;
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #a4ffaf;
+}
+.generate:hover svg path {
+  fill: #a4ffaf;
 }
 
 .strength-level {
@@ -172,4 +205,52 @@ label {
   line-height: 24px;
   text-align: right;
   color: #e6e5ea;
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    padding: 31px 114px 196px 114px;
+  }
+  h1 {
+    margin-top: 133px;
+  }
+  .password {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+  }
+  .length {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .number {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+  }
+  label {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .strength-level {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .generate {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+@media screen and (min-width: 768px) {
+  main {
+    padding: 31px 450px 196px 450px;
+  }
 }
