@@ -72,7 +72,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="main-div">
       <h1>Password Generator</h1>
       <main>
         <div className="final-password">
