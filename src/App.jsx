@@ -1,5 +1,5 @@
 import "./app.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 function App() {
   const [sliderValue, setSliderValue] = useState(10);
@@ -7,7 +7,7 @@ function App() {
   const [lowercaseChecked, setLowercaseChecked] = useState(false);
   const [numbersChecked, setNumbersChecked] = useState(false);
   const [symbolsChecked, setSymbolsChecked] = useState(false);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("P4$5W0rD!");
   const [copied, setCopied] = useState(false);
 
   const handleSliderChange = (event) => {
@@ -76,7 +76,12 @@ function App() {
       <h1>Password Generator</h1>
       <main>
         <div className="final-password">
-          <span className="password">{password}</span>
+          <span
+            className="password"
+            style={{ opacity: password === "P4$5W0rD!" ? 0.25 : 1 }}
+          >
+            {password}
+          </span>
           {copied ? <span className="copied">Copied</span> : null}
           <svg
             onClick={handleCopyClick}
